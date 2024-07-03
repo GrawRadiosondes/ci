@@ -15,7 +15,7 @@ jobs:
           node-version: 'lts/*'
       - run: npm ci
       - run: npm run prod
-      - uses: mad9000/actions-find-and-replace-string@3
+      - uses: mad9000/actions-find-and-replace-string@5
         id: cleaned_ref_name
         with:
           source: ${{ github.ref_name }}

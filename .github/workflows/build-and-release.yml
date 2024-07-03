@@ -12,7 +12,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: mad9000/actions-find-and-replace-string@3
+      - uses: mad9000/actions-find-and-replace-string@5
         id: cleaned_ref_name
         with:
           source: ${{ github.ref_name }}
@@ -22,6 +22,6 @@ jobs:
         with:
           name: ${{ steps.cleaned_ref_name.outputs.value }}
       - run: zip -r ${{github.event.repository.name}}-${{github.ref_name}}.zip .
-      - uses: softprops/action-gh-release@v1
+      - uses: softprops/action-gh-release@v2
         with:
           files: ${{github.event.repository.name}}-${{github.ref_name}}.zip
