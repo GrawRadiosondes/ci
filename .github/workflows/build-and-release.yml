@@ -1,0 +1,27 @@
+name: build-and-release
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mad9000/actions-find-and-replace-string@3
+        id: cleaned_ref_name
+        with:
+          source: ${{ github.ref_name }}
+          find: '/'
+          replace: '-'
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ steps.cleaned_ref_name.outputs.value }}
+      - run: zip -r ${{github.event.repository.name}}-${{github.ref_name}}.zip .
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: ${{github.event.repository.name}}-${{github.ref_name}}.zip
