@@ -1,0 +1,81 @@
+// based on a gist from Simon Padbury (https://github.com/SimonPadbury):
+// https://gist.github.com/SimonPadbury/e0f081400e1c59487a806ea601067ba4
+
+$ci-colors: (
+        "inherit": inherit,
+        "current": currentColor,
+        "transparent": transparent,
+        "black": black,
+        "white": white,
+        "green": #00d27e,
+        "dark-green": #014948,
+        "fresh-green": #c5f120,
+        "light-green": #d1ffb4,
+        "sky-blue": #6bdff0,
+        "ocean-blue": #05a4d6,
+        "purple": #9f85d3,
+        "warn-orange": #e67c5a,
+        "red": #e93947,
+);
+$color-shade-interval: 7.6%;
+$classes: (
+        "accent": "accent-color",
+        "bg": "background-color",
+        "border": "border-color",
+        "caret": "caret-color",
+        "decoration": "text-decoration-color",
+        "outline": "outline-color",
+        "text": "color",
+);
+
+:root {
+  @each $key, $value in $ci-colors {
+    --#{$key}: #{$value};
+  }
+}
+
+@each $class-key, $attribute-key in $classes {
+  @each $key, $color in $ci-colors {
+    .#{$class-key}-#{$key} {
+      #{$attribute-key}: $color;
+
+      @if ($key != "inherit" and $key != "current" and $key != "transparent" and $key != "black" and $key != "white") {
+        &-100 {
+          #{$attribute-key}: lighten($color, $color-shade-interval * 4);
+        }
+
+        &-200 {
+          #{$attribute-key}: lighten($color, $color-shade-interval * 3);
+        }
+
+        &-300 {
+          #{$attribute-key}: lighten($color, $color-shade-interval * 2);
+        }
+
+        &-400 {
+          #{$attribute-key}: lighten($color, $color-shade-interval);
+        }
+
+        &-500 {
+          #{$attribute-key}: $color;
+        }
+
+        &-600 {
+          #{$attribute-key}: darken($color, $color-shade-interval);
+        }
+
+        &-700 {
+          #{$attribute-key}: darken($color, $color-shade-interval * 2);
+        }
+
+        &-800 {
+          #{$attribute-key}: darken($color, $color-shade-interval * 3);
+        }
+
+        &-900 {
+          #{$attribute-key}: darken($color, $color-shade-interval * 4);
+        }
+      }
+    }
+  }
+}
