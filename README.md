@@ -38,6 +38,7 @@ npm run watch
 ## Release
     
 ```bash
+rm -rf dist
 npm run prod
 npm version major|minor|patch
 npm publish
