@@ -1,7 +1,10 @@
 name: publish-to-npm
+
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - '*.*.*'
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
