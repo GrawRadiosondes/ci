@@ -34,3 +34,11 @@ npm install @graw/ci
 npm install
 npm run watch
 ```
+
+## Release
+    
+```bash
+npm run prod
+npm version major|minor|patch
+npm publish
+```
