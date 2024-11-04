@@ -6,7 +6,11 @@ on:
       - '*.*.*'
 
 jobs:
+  trufflehog:
+    uses: ./.github/workflows/trufflehog.yml
   build-and-publish:
+    needs:
+      - trufflehog
     runs-on: ubuntu-latest
     permissions:
       contents: read

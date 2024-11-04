@@ -8,8 +8,12 @@ on:
 jobs:
   build:
     uses: ./.github/workflows/build.yml
+  trufflehog:
+    uses: ./.github/workflows/trufflehog.yml
   release:
-    needs: build
+    needs:
+      - trufflehog
+      - build
     runs-on: ubuntu-latest
     steps:
       - uses: mad9000/actions-find-and-replace-string@5
