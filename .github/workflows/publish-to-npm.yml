@@ -3,7 +3,7 @@ name: publish-to-npm
 on:
   push:
     tags:
-      - '*.*.*'
+      - "*.*.*"
 
 jobs:
   trufflehog:
@@ -19,8 +19,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          cache: 'npm'
-          node-version: 'lts/*'
+          cache: "npm"
+          node-version: "lts/*"
       - run: npm ci
       - run: npm run prod
       - run: npm publish --provenance --access public
