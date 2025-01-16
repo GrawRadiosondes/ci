@@ -5,22 +5,22 @@ This package contains assets to build a web application that follows the Corpora
 ## Contents
 
 - CSS Styles
-    - Colors
-        - as root css variables
-        - as helper classes with additional shades
-            - accent
-            - bg
-            - border
-            - caret
-            - decoration
-            - outline
-            - text
-    - Fonts
+  - Colors
+    - as root css variables
+    - as helper classes with additional shades
+      - accent
+      - bg
+      - border
+      - caret
+      - decoration
+      - outline
+      - text
+  - Fonts
 - Images
-    - Icon
-    - Logo
-    - Favicon
-    - PWA Assets
+  - Icon
+  - Logo
+  - Favicon
+  - PWA Assets
 
 ## Installation
 
@@ -36,7 +36,7 @@ npm run watch
 ```
 
 ## Release
-    
+
 ```bash
 rm -rf dist
 npm run prod
