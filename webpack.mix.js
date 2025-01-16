@@ -4,5 +4,5 @@ mix.setPublicPath("dist");
 
 mix.copy("src/img", "dist/img");
 
-mix.sass('src/css/colors.scss', '/')
-mix.sass('src/css/fonts.scss', '/')
+mix.sass("src/colors.scss", "/");
+mix.sass("src/fonts.scss", "/").options({ processCssUrls: false });
