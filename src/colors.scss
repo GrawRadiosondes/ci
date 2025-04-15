@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // based on a gist from Simon Padbury (https://github.com/SimonPadbury):
 // https://gist.github.com/SimonPadbury/e0f081400e1c59487a806ea601067ba4
 
@@ -52,19 +54,19 @@ $classes: (
           "white"
       ) {
         &-100 {
-          #{$attribute-key}: lighten($color, $color-shade-interval * 4);
+          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval * 4, $space: hsl);
         }
 
         &-200 {
-          #{$attribute-key}: lighten($color, $color-shade-interval * 3);
+          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval * 3, $space: hsl);
         }
 
         &-300 {
-          #{$attribute-key}: lighten($color, $color-shade-interval * 2);
+          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval * 2, $space: hsl);
         }
 
         &-400 {
-          #{$attribute-key}: lighten($color, $color-shade-interval);
+          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval, $space: hsl);
         }
 
         &-500 {
@@ -72,19 +74,19 @@ $classes: (
         }
 
         &-600 {
-          #{$attribute-key}: darken($color, $color-shade-interval);
+          #{$attribute-key}: color.adjust($color, $lightness: -$color-shade-interval, $space: hsl);
         }
 
         &-700 {
-          #{$attribute-key}: darken($color, $color-shade-interval * 2);
+          #{$attribute-key}: color.adjust($color, $lightness: -($color-shade-interval * 2), $space: hsl);
         }
 
         &-800 {
-          #{$attribute-key}: darken($color, $color-shade-interval * 3);
+          #{$attribute-key}: color.adjust($color, $lightness: -($color-shade-interval * 3), $space: hsl);
         }
 
         &-900 {
-          #{$attribute-key}: darken($color, $color-shade-interval * 4);
+          #{$attribute-key}: color.adjust($color, $lightness: -($color-shade-interval * 4), $space: hsl);
         }
       }
     }
