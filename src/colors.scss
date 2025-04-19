@@ -54,19 +54,35 @@ $classes: (
           "white"
       ) {
         &-100 {
-          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval * 4, $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: $color-shade-interval * 4,
+            $space: hsl
+          );
         }
 
         &-200 {
-          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval * 3, $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: $color-shade-interval * 3,
+            $space: hsl
+          );
         }
 
         &-300 {
-          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval * 2, $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: $color-shade-interval * 2,
+            $space: hsl
+          );
         }
 
         &-400 {
-          #{$attribute-key}: color.adjust($color, $lightness: $color-shade-interval, $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: $color-shade-interval,
+            $space: hsl
+          );
         }
 
         &-500 {
@@ -74,19 +90,35 @@ $classes: (
         }
 
         &-600 {
-          #{$attribute-key}: color.adjust($color, $lightness: -$color-shade-interval, $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: -$color-shade-interval,
+            $space: hsl
+          );
         }
 
         &-700 {
-          #{$attribute-key}: color.adjust($color, $lightness: -($color-shade-interval * 2), $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: -($color-shade-interval * 2),
+            $space: hsl
+          );
         }
 
         &-800 {
-          #{$attribute-key}: color.adjust($color, $lightness: -($color-shade-interval * 3), $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: -($color-shade-interval * 3),
+            $space: hsl
+          );
         }
 
         &-900 {
-          #{$attribute-key}: color.adjust($color, $lightness: -($color-shade-interval * 4), $space: hsl);
+          #{$attribute-key}: color.adjust(
+            $color,
+            $lightness: -($color-shade-interval * 4),
+            $space: hsl
+          );
         }
       }
     }
