@@ -2,6 +2,86 @@
 
 // based on a gist from Simon Padbury (https://github.com/SimonPadbury):
 // https://gist.github.com/SimonPadbury/e0f081400e1c59487a806ea601067ba4
+// also including a gist from Kitty Giraudel (https://github.com/KittyGiraudel)
+// https://gist.github.com/KittyGiraudel/9fa19d254864f33d4a80
+
+///
+/// Casts a string into a number
+///
+/// @param {String | Number} $value - Value to be parsed
+///
+/// @return {Number}
+///
+@function to-number($value) {
+  @if type-of($value) == "number" {
+    @return $value;
+  }
+
+  $result: 0;
+  $digits: 0;
+  $minus: str-slice($value, 1, 1) == "-";
+  $numbers: (
+    "0": 0,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 5,
+    "6": 6,
+    "7": 7,
+    "8": 8,
+    "9": 9,
+  );
+
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $character: str-slice($value, $i, $i);
+
+    @if not(index(map-keys($numbers), $character) or $character == ".") {
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i));
+    }
+
+    @if $character == "." {
+      $digits: 1;
+    } @else if $digits == 0 {
+      $result: $result * 10 + map-get($numbers, $character);
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+
+  @return if($minus, -$result, $result);
+}
+
+///
+/// Add `$unit` to `$value`
+///
+/// @param {Number} $value - Value to add unit to
+/// @param {String} $unit - String representation of the unit
+///
+/// @return {Number} - `$value` expressed in `$unit`
+///
+@function to-length($value, $unit) {
+  $units: (
+    "px": 1px,
+    "cm": 1cm,
+    "mm": 1mm,
+    "%": 1%,
+    "ch": 1ch,
+    "pc": 1pc,
+    "in": 1in,
+    "em": 1em,
+    "rem": 1rem,
+    "pt": 1pt,
+    "ex": 1ex,
+    "vw": 1vw,
+    "vh": 1vh,
+    "vmin": 1vmin,
+    "vmax": 1vmax,
+  );
+
+  @return $value * map-get($units, $unit);
+}
 
 $ci-colors: (
   "inherit": inherit,
@@ -19,7 +99,7 @@ $ci-colors: (
   "warn-orange": #e67c5a,
   "red": #e93947,
 );
-$color-shade-interval: 7.6%;
+$color-shade-interval: 7.6;
 $classes: (
   "accent": "accent-color",
   "bg": "background-color",
@@ -29,10 +109,66 @@ $classes: (
   "outline": "outline-color",
   "text": "color",
 );
+$shades: (
+  "100": $color-shade-interval * 4,
+  "200": $color-shade-interval * 3,
+  "300": $color-shade-interval * 2,
+  "400": $color-shade-interval,
+  "500": 0,
+  "600": $color-shade-interval * -1,
+  "700": $color-shade-interval * -2,
+  "800": $color-shade-interval * -3,
+  "900": $color-shade-interval * -4,
+);
+
+$root-vars: ();
+
+@each $key, $color in $ci-colors {
+  $root-vars: map-merge(
+    $root-vars,
+    (
+      "--#{$key}": $color,
+    )
+  );
+
+  @if (
+    $key !=
+      "inherit" and
+      $key !=
+      "current" and
+      $key !=
+      "transparent" and
+      $key !=
+      "black" and
+      $key !=
+      "white"
+  ) {
+    @each $shade-key, $shade-adjustment in $shades {
+      $root-vars: map-merge(
+        $root-vars,
+        (
+          "--#{$key}-#{$shade-key}": color.adjust(
+              $color,
+              $lightness: to-number($shade-adjustment),
+              $space: hsl
+            ),
+        )
+      );
+    }
+  }
+}
 
 :root {
+  @each $var-name, $var-value in $root-vars {
+    #{$var-name}: #{$var-value};
+  }
+}
+
+@each $class-key, $attribute-key in $classes {
   @each $key, $color in $ci-colors {
-    --#{$key}: #{$color};
+    .#{$class-key}-#{$key} {
+      #{$attribute-key}: $color;
+    }
 
     @if (
       $key !=
@@ -46,140 +182,11 @@ $classes: (
         $key !=
         "white"
     ) {
-      --#{$key}-100: color.adjust(
-        $color,
-        $lightness: $color-shade-interval * 4,
-        $space: hsl
-      );
-
-      --#{$key}-200: color.adjust(
-        $color,
-        $lightness: $color-shade-interval * 3,
-        $space: hsl
-      );
-
-      --#{$key}-300: color.adjust(
-        $color,
-        $lightness: $color-shade-interval * 2,
-        $space: hsl
-      );
-
-      --#{$key}-400: color.adjust(
-        $color,
-        $lightness: $color-shade-interval,
-        $space: hsl
-      );
-
-      --#{$key}-500: $color;
-
-      --#{$key}-600: color.adjust(
-        $color,
-        $lightness: -$color-shade-interval,
-        $space: hsl
-      );
-
-      --#{$key}-700: color.adjust(
-        $color,
-        $lightness: -($color-shade-interval * 2),
-        $space: hsl
-      );
-
-      --#{$key}-800: color.adjust(
-        $color,
-        $lightness: -($color-shade-interval * 3),
-        $space: hsl
-      );
-
-      --#{$key}-900: color.adjust(
-        $color,
-        $lightness: -($color-shade-interval * 4),
-        $space: hsl
-      );
-    }
-  }
-}
-
-@each $class-key, $attribute-key in $classes {
-  @each $key, $color in $ci-colors {
-    .#{$class-key}-#{$key} {
-      #{$attribute-key}: $color;
-
-      @if (
-        $key !=
-          "inherit" and
-          $key !=
-          "current" and
-          $key !=
-          "transparent" and
-          $key !=
-          "black" and
-          $key !=
-          "white"
-      ) {
-        &-100 {
+      @each $shade-key, $shade-adjustment in $shades {
+        .#{$class-key}-#{$key}-#{$shade-key} {
           #{$attribute-key}: color.adjust(
             $color,
-            $lightness: $color-shade-interval * 4,
-            $space: hsl
-          );
-        }
-
-        &-200 {
-          #{$attribute-key}: color.adjust(
-            $color,
-            $lightness: $color-shade-interval * 3,
-            $space: hsl
-          );
-        }
-
-        &-300 {
-          #{$attribute-key}: color.adjust(
-            $color,
-            $lightness: $color-shade-interval * 2,
-            $space: hsl
-          );
-        }
-
-        &-400 {
-          #{$attribute-key}: color.adjust(
-            $color,
-            $lightness: $color-shade-interval,
-            $space: hsl
-          );
-        }
-
-        &-500 {
-          #{$attribute-key}: $color;
-        }
-
-        &-600 {
-          #{$attribute-key}: color.adjust(
-            $color,
-            $lightness: -$color-shade-interval,
-            $space: hsl
-          );
-        }
-
-        &-700 {
-          #{$attribute-key}: color.adjust(
-            $color,
-            $lightness: -($color-shade-interval * 2),
-            $space: hsl
-          );
-        }
-
-        &-800 {
-          #{$attribute-key}: color.adjust(
-            $color,
-            $lightness: -($color-shade-interval * 3),
-            $space: hsl
-          );
-        }
-
-        &-900 {
-          #{$attribute-key}: color.adjust(
-            $color,
-            $lightness: -($color-shade-interval * 4),
+            $lightness: to-number($shade-adjustment),
             $space: hsl
           );
         }
