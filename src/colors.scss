@@ -31,8 +31,71 @@ $classes: (
 );
 
 :root {
-  @each $key, $value in $ci-colors {
-    --#{$key}: #{$value};
+  @each $key, $color in $ci-colors {
+    --#{$key}: #{$color};
+
+    @if (
+      $key !=
+        "inherit" and
+        $key !=
+        "current" and
+        $key !=
+        "transparent" and
+        $key !=
+        "black" and
+        $key !=
+        "white"
+    ) {
+      --#{$key}-100: color.adjust(
+        $color,
+        $lightness: $color-shade-interval * 4,
+        $space: hsl
+      );
+
+      --#{$key}-200: color.adjust(
+        $color,
+        $lightness: $color-shade-interval * 3,
+        $space: hsl
+      );
+
+      --#{$key}-300: color.adjust(
+        $color,
+        $lightness: $color-shade-interval * 2,
+        $space: hsl
+      );
+
+      --#{$key}-400: color.adjust(
+        $color,
+        $lightness: $color-shade-interval,
+        $space: hsl
+      );
+
+      --#{$key}-500: $color;
+
+      --#{$key}-600: color.adjust(
+        $color,
+        $lightness: -$color-shade-interval,
+        $space: hsl
+      );
+
+      --#{$key}-700: color.adjust(
+        $color,
+        $lightness: -($color-shade-interval * 2),
+        $space: hsl
+      );
+
+      --#{$key}-800: color.adjust(
+        $color,
+        $lightness: -($color-shade-interval * 3),
+        $space: hsl
+      );
+
+      --#{$key}-900: color.adjust(
+        $color,
+        $lightness: -($color-shade-interval * 4),
+        $space: hsl
+      );
+    }
   }
 }
 
