@@ -35,7 +35,14 @@ npm install
 npm run watch
 ```
 
-## Release
+## Automatic Release
+
+```bash
+npm version major|minor|patch
+git push origin main --tags
+```
+
+## Manual Release
 
 ```bash
 rm -rf dist
