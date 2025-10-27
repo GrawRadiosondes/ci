@@ -1,6 +1,6 @@
 # Graw CI
 
-This package contains assets to build a web application that follows the Corporate Identity of Graw Radiosondes.
+This package contains the necessary assets to develop a web application that aligns with the corporate identity of Graw Radiosondes.
 
 ## Contents
 
@@ -35,14 +35,16 @@ npm install
 npm run watch
 ```
 
-## Automatic Release
+## Release
+
+A package release is performed automatically once a version tag is pushed to GitHub. 
 
 ```bash
 npm version major|minor|patch
 git push origin main --tags
 ```
 
-## Manual Release
+### Manually
 
 ```bash
 rm -rf dist
