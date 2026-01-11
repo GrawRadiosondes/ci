@@ -38,12 +38,12 @@
     "9": 9,
   );
 
-  @for $i from if($minus, 2, 1) through string.length($value) {
+  @for $i from if(sass($minus): 2; else: 1) through string.length($value) {
     $character: string.slice($value, $i, $i);
 
     @if not(list.index(map.keys($numbers), $character) or $character == ".") {
       @return to-length(
-        if($minus, -$result, $result),
+      if(sass($minus): -$result; else: $result),
         string.slice($value, $i)
       );
     }
@@ -58,7 +58,7 @@
     }
   }
 
-  @return if($minus, -$result, $result);
+  @return if(sass($minus): sass(-$result); else: sass($result))
 }
 
 ///
