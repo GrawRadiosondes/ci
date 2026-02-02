@@ -25,14 +25,14 @@ This package contains the necessary assets to develop a web application that ali
 ## Installation
 
 ```bash
-npm install @graw/ci
+bun install @graw/ci
 ```
 
 ## Development
 
 ```bash
-npm install
-npm run watch
+bun install
+bun run watch
 ```
 
 ## Release
@@ -40,7 +40,7 @@ npm run watch
 A package release is performed automatically once a version tag is pushed to GitHub.
 
 ```bash
-npm version major|minor|patch
+bun version major|minor|patch
 git push origin main --tags
 ```
 
@@ -48,7 +48,7 @@ git push origin main --tags
 
 ```bash
 rm -rf dist
-npm run prod
-npm version major|minor|patch
-npm publish
+bun run prod
+bun version major|minor|patch
+bunx npm publish
 ```

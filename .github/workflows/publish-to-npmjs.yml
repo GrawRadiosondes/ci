@@ -1,4 +1,4 @@
-name: publish-to-npm
+name: publish-to-npmjs
 
 on:
   push:
@@ -22,8 +22,9 @@ jobs:
           cache: "npm"
           node-version: "lts/*"
           registry-url: "https://registry.npmjs.org"
-      - run: npm ci
-      - run: npm run prod
-      - run: npm publish --provenance
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run prod
+      - run: bunx npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

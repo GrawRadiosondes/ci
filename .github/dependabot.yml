@@ -1,6 +1,6 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
+  - package-ecosystem: "bun"
     directory: "/"
     schedule:
       timezone: "Europe/Berlin"
@@ -10,7 +10,7 @@ updates:
     assignees:
       - nikcani
     groups:
-      npm:
+      bun:
         patterns:
           - "*"
 
