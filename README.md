@@ -37,7 +37,7 @@ npm run watch
 
 ## Release
 
-A package release is performed automatically once a version tag is pushed to GitHub. 
+A package release is performed automatically once a version tag is pushed to GitHub.
 
 ```bash
 npm version major|minor|patch
