@@ -40,7 +40,7 @@ bun run watch
 A package release is performed automatically once a version tag is pushed to GitHub.
 
 ```bash
-bun version major|minor|patch
+bunx npm version major|minor|patch
 git push origin main --tags
 ```
 
@@ -49,7 +49,7 @@ git push origin main --tags
 ```bash
 rm -rf dist
 bun run prod
-bun version major|minor|patch
+bunx npm version major|minor|patch
 bunx npm login
 bun publish
 ```
