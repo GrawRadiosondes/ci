@@ -1,0 +1,7 @@
+{
+    "editor.autoClosingBrackets": "always",
+    "editor.fontFamily": "'JetBrains Mono', 'Droid Sans Mono', 'monospace', monospace",
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange",
+    "terminal.integrated.scrollback": 100000,
+}
