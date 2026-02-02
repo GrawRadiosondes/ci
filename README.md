@@ -37,15 +37,6 @@ bun run watch
 
 ## Release
 
-A package release is performed automatically once a version tag is pushed to GitHub.
-
-```bash
-bunx npm version major|minor|patch
-git push origin main --tags
-```
-
-### Manually
-
 ```bash
 rm -rf dist
 bun run prod
