@@ -4,4 +4,11 @@
     "editor.formatOnSave": true,
     "files.autoSave": "onFocusChange",
     "terminal.integrated.scrollback": 100000,
+    "VsCodeTaskButtons.showCounter": false,
+    "VsCodeTaskButtons.tasks": [
+        {
+            "label": "$(extensions) update",
+            "task": "update"
+        },
+    ],
 }
