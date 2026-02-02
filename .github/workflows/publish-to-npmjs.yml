@@ -14,13 +14,12 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v6
       - uses: oven-sh/setup-bun@v2
-        with:
-          registries: https://registry.npmjs.org
-      - run: bun install --frozen-lockfile
+      - run: bun install
       - run: bun run prod
-      - run: bun publish
+      - run: bunx npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
