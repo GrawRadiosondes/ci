@@ -50,5 +50,6 @@ git push origin main --tags
 rm -rf dist
 bun run prod
 bun version major|minor|patch
-bunx npm publish
+bunx npm login
+bun publish
 ```
