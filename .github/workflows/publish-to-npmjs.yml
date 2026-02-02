@@ -22,9 +22,8 @@ jobs:
           cache: "npm"
           node-version: "lts/*"
           registry-url: "https://registry.npmjs.org"
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install
-      - run: bun run prod
-      - run: bunx npm publish --provenance
+      - run: npm install
+      - run: npm run prod
+      - run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
