@@ -18,7 +18,7 @@ jobs:
           source: ${{ github.ref_name }}
           find: "/"
           replace: "-"
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         with:
           name: ${{ steps.cleaned_ref_name.outputs.value }}
           path: dist
