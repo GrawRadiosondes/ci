@@ -1,1 +1,12 @@
-{}
+{
+  "trailingComma": "all",
+  "semi": false,
+  "overrides": [
+    {
+      "files": [".vscode/*.json", "devcontainer.json"],
+      "options": {
+        "parser": "jsonc"
+      }
+    }
+  ]
+}
