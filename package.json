@@ -7,24 +7,25 @@
     "url": "git+https://github.com/GrawRadiosondes/ci.git"
   },
   "scripts": {
-    "dev": "mix",
-    "watch": "mix watch",
-    "prod": "mix --production",
+    "dev": "vite build --watch",
+    "prod": "vite build",
     "prettier": "prettier . --write"
   },
   "devDependencies": {
-    "laravel-mix": "^6.0.49",
     "prettier": "3.8.1",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.98.0",
-    "sass-loader": "^16.0.7"
+    "sass-loader": "^16.0.7",
+    "vite": "^8.0.3",
+    "vite-plugin-static-copy": "^4.0.0"
   },
   "files": [
+    "README.md",
+    "bun.json",
     "dist",
-    "src",
     "package.json",
-    "package-lock.json",
-    "README.md"
+    "src",
+    "vite.config.js"
   ],
   "publishConfig": {
     "access": "public"
