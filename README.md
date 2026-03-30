@@ -42,6 +42,5 @@ rm -rf dist
 bun run prod
 bunx npm version major|minor|patch
 git push origin main --tags
-bunx npm login # if needed
-bun publish
+bunx npm publish
 ```
