@@ -26,6 +26,6 @@ jobs:
         with:
           name: ${{ steps.cleaned_ref_name.outputs.value }}
       - run: zip -r ${{github.event.repository.name}}-${{github.ref_name}}.zip .
-      - uses: softprops/action-gh-release@v2
+      - uses: softprops/action-gh-release@v3
         with:
           files: ${{github.event.repository.name}}-${{github.ref_name}}.zip
