@@ -16,8 +16,8 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.99.0",
     "sass-loader": "^16.0.7",
-    "vite": "^8.0.8",
-    "vite-plugin-static-copy": "^4.0.1"
+    "vite": "^8.0.9",
+    "vite-plugin-static-copy": "^4.1.0"
   },
   "files": [
     "README.md",
