@@ -8,7 +8,15 @@ export default defineConfig({
     rollupOptions: {
       input: ["src/colors.scss", "src/fonts.scss"],
       output: {
-        assetFileNames: "[name].[ext]",
+        assetFileNames: (assetInfo) => {
+          const name = assetInfo.names?.[0] ?? ""
+
+          if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
+            return "fonts/[name].[ext]"
+          }
+
+          return "[name].[ext]"
+        },
       },
     },
   },
