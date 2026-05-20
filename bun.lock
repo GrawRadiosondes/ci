@@ -5,12 +5,12 @@
     "": {
       "name": "@graw/ci",
       "devDependencies": {
-        "prettier": "latest",
-        "resolve-url-loader": "latest",
-        "sass": "latest",
-        "sass-loader": "latest",
-        "vite": "latest",
-        "vite-plugin-static-copy": "latest",
+        "prettier": "3.8.3",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.99.0",
+        "sass-loader": "^17.0.0",
+        "vite": "^8.0.13",
+        "vite-plugin-static-copy": "^4.1.0",
       },
     },
   },
@@ -153,8 +153,6 @@
 
     "nanoid": ["nanoid@3.3.11", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w=="],
 
-    "neo-async": ["neo-async@2.6.2", "", {}, "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw=="],
-
     "node-addon-api": ["node-addon-api@7.1.1", "", {}, "sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ=="],
 
     "normalize-path": ["normalize-path@3.0.0", "", {}, "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA=="],
@@ -179,7 +177,7 @@
 
     "sass": ["sass@1.99.0", "", { "dependencies": { "chokidar": "^4.0.0", "immutable": "^5.1.5", "source-map-js": ">=0.6.2 <2.0.0" }, "optionalDependencies": { "@parcel/watcher": "^2.4.1" }, "bin": { "sass": "sass.js" } }, "sha512-kgW13M54DUB7IsIRM5LvJkNlpH+WhMpooUcaWGFARkF1Tc82v9mIWkCbCYf+MBvpIUBSeSOTilpZjEPr2VYE6Q=="],
 
-    "sass-loader": ["sass-loader@16.0.8", "", { "dependencies": { "neo-async": "^2.6.2" }, "peerDependencies": { "@rspack/core": "0.x || ^1.0.0 || ^2.0.0-0", "node-sass": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0", "sass": "^1.3.0", "sass-embedded": "*", "webpack": "^5.0.0" }, "optionalPeers": ["@rspack/core", "node-sass", "sass", "sass-embedded", "webpack"] }, "sha512-hcov4ZwZJIGbEuyNr9EmiTmZueyrxSToE6GOzoZnq5JM7ecRO7ttyvilPn+VmRsqiP16+VYZzVnGZj/hzZgKBA=="],
+    "sass-loader": ["sass-loader@17.0.0", "", { "peerDependencies": { "@rspack/core": "0.x || ^1.0.0 || ^2.0.0-0", "sass": "^1.3.0", "sass-embedded": "*", "webpack": "^5.0.0" }, "optionalPeers": ["@rspack/core", "sass", "sass-embedded", "webpack"] }, "sha512-0Ybm8ohBQ9LcrycVrFQp/KQBNX5a3Wda9/smS0mE/xLffzEnwvV8nykOzrbiSWNzTE3IB/jiXx8O4QmDPG2+Gw=="],
 
     "source-map": ["source-map@0.6.1", "", {}, "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="],
 
