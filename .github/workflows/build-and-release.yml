@@ -16,7 +16,7 @@ jobs:
       - build
     runs-on: ubuntu-latest
     steps:
-      - uses: mad9000/actions-find-and-replace-string@5
+      - uses: mad9000/actions-find-and-replace-string@6
         id: cleaned_ref_name
         with:
           source: ${{ github.ref_name }}
