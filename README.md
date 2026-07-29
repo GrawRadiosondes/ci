@@ -38,6 +38,10 @@ bun run watch
 ## Release
 
 ```bash
-bunx npm version [major | minor | patch]
+rm -rf dist
+bun run prod
+bunx npm version major|minor|patch
 git push origin main --tags
+bunx npm login
+bunx npm publish
 ```
